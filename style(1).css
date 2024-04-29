@@ -1,0 +1,213 @@
+ .play-btn {
+  position: absolute;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#ff6347, #ff6347);
+  cursor: pointer;
+  outline: none;
+}
+
+.play-btn::before {
+  content: "";
+  position: absolute;
+  width: 93%;
+  height: 93%;
+  background-color: #000;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.play-btn:checked {
+  animation: borderAnimate 700ms ease-in-out 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes borderAnimate {
+  0% {
+    transform: rotate(0);
+    background: conic-gradient(#ff6347, transparent 20%);
+  }
+
+  80% {
+    background: conic-gradient(#ff6347, transparent 90%);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    background: conic-gradient(#ff6347, #ff6347);
+  }
+}
+ 
+.play-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 60%;
+  top: 50%;
+  background-color: #ff6347;
+  transform: translate(-60%, -50%) rotate(90deg);
+  clip-path: polygon(50% 15%, 0% 100%, 100% 100%);
+  transition: all 400ms ease-in-out;
+  cursor: pointer;
+}
+
+.play-btn:checked + .play-icon {
+  clip-path: polygon(0 100%, 0% 100%, 100% 100%);
+}
+
+.pause-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.pause-icon::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #ff6347;
+  left: 0;
+}
+
+.pause-icon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: #ff6347;
+  right: 0;
+}
+
+.play-btn:checked ~ .pause-icon::before {
+  animation: reveal 300ms ease-in-out 350ms 1;
+  animation-fill-mode: forwards;
+}
+
+.play-btn:checked ~ .pause-icon::after {
+  animation: reveal 300ms ease-in-out 600ms 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes reveal {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 35%;
+  }
+}
+
+container {
+  cursor: pointer;
+  border: 1px solid #555;
+  text-align: center;
+  padding: 5px;
+}
+.dark{
+  background-color: #222;
+  color: #e6e6e6;
+  .button {
+    display: inline-block; 
+    width: auto; 
+    height: 40px; 
+    background-color: #000;
+    color: rgb(237, 236, 236);
+    padding: 12px;
+    margin-right: 100px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -4px;
+    top: -1px;
+    margin: auto;
+    width: 128px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .button::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+  }
+  
+  .button:hover::after {
+    filter: blur(30px);
+  }
+  
+  .button:hover::before {
+    transform: rotate(-180deg);
+  }
+  
+  .button:active::before {
+    scale: 0.7;
+  }
+  .turntable{
+    position: relative;
+    margin: auto;
+    display: block;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    width: 410px;
+    height:380px;
+    background: #c69cd8;
+    border-radius: 5%;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.7);
+  }
+  
+} 
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer }
